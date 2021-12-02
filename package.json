@@ -28,8 +28,7 @@
     "gulp-svg-sprite": "^1.3.7",
     "postcss": "^8.4.4",
     "postcss-csso": "^5.0.1",
-    "sass": "^1.44.0",
-    "uswds-gulp": "github:uswds/uswds-gulp"
+    "sass": "^1.44.0"
   },
   "resolutions": {
     "chokidar": "^3.5.2",
