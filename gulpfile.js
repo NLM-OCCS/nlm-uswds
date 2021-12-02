@@ -181,9 +181,16 @@ gulp.task("watch-sass", function () {
 
 gulp.task("watch", gulp.series("build-sass", "watch-sass"));
 
-gulp.task("default", gulp.series("watch"));
+gulp.task("default", gulp.series("build-sass"));
+
+gulp.task("build", gulp.series("build-sass"));
 
 gulp.task(
   "svg-sprite",
   gulp.series("build-sprite", "rename-sprite", "clean-sprite")
 );
+
+gulp.task("clean", function(cb) {
+  cb();
+  return del.sync("dist");
+});
