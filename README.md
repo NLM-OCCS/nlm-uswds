@@ -37,3 +37,18 @@ yarn install
 ```
 yarn run build
 ```
+
+or
+
+```
+gulp build
+```
+
+5. Some other tasks you may wish to try:
+
+* remove `dist` subdirectory by running `gulp clean`.
+* build `dist` and rebuild on any changes by running `gulp watch`
+
+## Output
+
+The output of the process is the files in the `dist` subdirectory, principally`dist/css/nlm-uswds.css` and `dist/css/nlm/nlm-uswds.css.map`.

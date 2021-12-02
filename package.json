@@ -4,7 +4,10 @@
   "description": "A gulp build of USWDS with style customizations for NLM",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "watch": "gulp watch"
   },
   "keywords": [],
   "repository": {

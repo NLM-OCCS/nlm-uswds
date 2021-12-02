@@ -181,7 +181,7 @@ gulp.task("watch-sass", function () {
 
 gulp.task("watch", gulp.series("build-sass", "watch-sass"));
 
-gulp.task("default", gulp.series("build-sass"));
+gulp.task("default", gulp.series("watch"));
 
 gulp.task("build", gulp.series("build-sass"));
 
