@@ -183,7 +183,14 @@ gulp.task("watch", gulp.series("build-sass", "watch-sass"));
 
 gulp.task("default", gulp.series("watch"));
 
-gulp.task("build", gulp.series("build-sass"));
+gulp.task("build",
+  gulp.series(
+    "copy-uswds-fonts",
+    "copy-uswds-images",
+    "copy-uswds-js",
+    "build-sass"
+  )
+);
 
 gulp.task(
   "svg-sprite",
