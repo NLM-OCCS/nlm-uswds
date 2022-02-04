@@ -52,3 +52,12 @@ gulp build
 ## Output
 
 The output of the process is the files in the `dist` subdirectory, principally`dist/css/nlm-uswds.css` and `dist/css/nlm/nlm-uswds.css.map`.
+
+## Promoting
+
+For now, check-out the
+[static-assets](https://git-scm.nlm.nih.gov/projects/AS/repos/static-assets)
+git repository and copy the files from this repo's `dist` into the other
+repo's `uswds` sub-directory, then add/commit/push to get them onto the server.
+
+We will worry about automating that later, if at all.
