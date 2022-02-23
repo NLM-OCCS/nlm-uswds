@@ -1,0 +1,141 @@
+.usa-footer__primary-section, .usa-header--basic {
+  background-color: color("blue-warm-60");
+
+  > .grid-container {
+    @include grid-container($theme-footer-max-width);
+  }
+}
+
+.bg-secondary {
+  background-color: color("blue-warm-5") !important;	
+	
+}
+
+
+/* HEADER */
+
+.usa-button {
+    background-color: color("blue-warm-70");
+	
+}
+
+.usa-header .logo {
+	max-height: 140px;
+    padding-left: 1rem;
+}
+
+.usa-search [type="submit"] {
+	background-image: url("../img/usa-icons-bg/search--white.svg"),linear-gradient(transparent, transparent) !important;
+}
+
+/* NAVIGATION */
+
+.usa-header--basic .usa-nav {
+    justify-content: flex-start !important;
+}
+
+.usa-header--basic .usa-nav-container {
+    align-items: flex-start !important;
+}
+
+.usa-nav {
+    float: left !important;
+}
+
+.usa-header--basic .usa-navbar {
+    width: auto;
+}
+
+.usa-nav__primary button, .usa-nav__primary > .usa-nav__primary-item > a {
+    color: #326295 !important;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1em;
+    font-family: "Roboto", "Helvetica Neue", Arial, Tacoma !important;
+	padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.usa-nav .usa-accordion {
+    font-family:"Roboto", "Helvetica Neue", Arial, Tacoma !important;
+}
+
+
+.usa-header--basic .usa-current::after, .usa-header--basic [aria-expanded="true"]::after, .usa-header--basic .usa-nav__link:hover::after {
+    display: none;
+}
+
+.usa-nav__primary button[aria-expanded="false"] {
+    background-position: right 1rem top 63%;
+}
+
+.usa-nav__primary button[aria-expanded="true"], .usa-nav__submenu {
+    background-color: color("blue-warm-5") !important;
+    color: #326295 !important;
+}
+
+.usa-nav__submenu .usa-nav__submenu-item a {	
+    color: #326295 !important;	
+	padding: 1.2rem 1.5rem !important;
+
+}
+.usa-nav__submenu {
+    padding: 0;	
+}
+.usa-nav__submenu-item {
+    border-bottom: 1px solid #ddd !important;
+}
+.usa-nav__submenu-item:hover {
+    background-color: color("gray-5") !important;
+}
+
+.usa-nav__submenu .usa-nav__submenu-item + * {
+    margin-top: 0;
+}
+
+
+/*FOOTER */
+.social_media img {
+    max-height: 35px;
+}
+
+.social_media li {
+    display: inline-block;
+    min-width: 35px;
+}
+
+footer a {
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+/*Media Quieries */
+
+@media (min-width: 1280px) {
+	.usa-nav-container {
+        @include grid-container("desktop-lg");
+    }
+	
+    .grid-container {
+        @include grid-container("desktop-lg");
+    }
+}
+
+@media (max-width: 991px) {
+	.usa-header .logo {
+	   max-height: 40px;
+        padding-left: 1rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+	.usa-header .logo {
+        padding-left: 1rem;
+    }
+	.usa-search {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
