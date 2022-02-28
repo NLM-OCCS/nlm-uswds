@@ -23,6 +23,7 @@ const uswds = require("./config/uswds");
 const del = require("del");
 const svgSprite = require("gulp-svg-sprite");
 const rename = require("gulp-rename");
+const browserSync = require("browser-sync").create();
 
 /*
 ----------------------------------------
@@ -200,4 +201,14 @@ gulp.task(
 gulp.task("clean", function(cb) {
   cb();
   return del.sync("dist");
+});
+
+gulp.task("serve", function(cb) {
+  browserSync.init({
+    "server": {
+      "baseDir": ["./examples", "./dist"],
+      "index": "index.htm"
+    }
+  });
+  cb();
 });

@@ -44,7 +44,19 @@ or
 gulp build
 ```
 
-5. Some other tasks you may wish to try:
+5. See what it will look like by running:
+
+```
+yarn run serve
+```
+
+or
+
+```
+gulp serve
+```
+
+6. Some other tasks you may wish to try:
 
 * remove `dist` subdirectory by running `gulp clean`.
 * build `dist` and rebuild on any changes by running `gulp watch`
