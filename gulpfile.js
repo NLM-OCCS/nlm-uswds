@@ -109,6 +109,7 @@ gulp.task("build-sass", function (done) {
       // uncomment the next line if necessary for Jekyll to build properly
       //.pipe(gulp.dest(`${SITE_CSS_DEST}`))
       .pipe(gulp.dest(`${CSS_DEST}`))
+      .pipe(browserSync.stream())
   );
 });
 
@@ -203,7 +204,7 @@ gulp.task("clean", function(cb) {
   return del.sync("dist");
 });
 
-gulp.task("serve", function(cb) {
+gulp.task("initserve", function(cb) {
   browserSync.init({
     "server": {
       "baseDir": ["./examples", "./dist"],
@@ -212,3 +213,5 @@ gulp.task("serve", function(cb) {
   });
   cb();
 });
+
+gulp.task("serve", gulp.series("build", "initserve", "watch-sass"));
