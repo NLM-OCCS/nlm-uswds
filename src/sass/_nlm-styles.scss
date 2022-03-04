@@ -1,9 +1,6 @@
+
 .usa-footer__primary-section, .usa-header--basic {
   background-color: color("blue-warm-60");
-
-  > .grid-container {
-    @include grid-container($theme-footer-max-width);
-  }
 }
 
 .bg-secondary {
@@ -47,7 +44,7 @@
 }
 
 .usa-nav__primary button, .usa-nav__primary > .usa-nav__primary-item > a {
-    color: #326295 !important;
+    color: color("blue-warm-70") !important;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1em;
@@ -70,11 +67,11 @@
 
 .usa-nav__primary button[aria-expanded="true"], .usa-nav__submenu {
     background-color: color("blue-warm-5") !important;
-    color: #326295 !important;
+    color: "blue-warm-70" !important;
 }
 
 .usa-nav__submenu .usa-nav__submenu-item a {	
-    color: #326295 !important;	
+    color: color("blue-warm-70") !important;
 	padding: 1.2rem 1.5rem !important;
 
 }
