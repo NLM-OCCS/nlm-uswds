@@ -4,8 +4,8 @@
 }
 
 .bg-secondary {
-  background-color: color("blue-warm-5") !important;	
-	
+  background-color: color("blue-warm-5") !important;
+
 }
 
 
@@ -13,16 +13,16 @@
 
 .usa-button {
     background-color: color("blue-warm-70");
-	
+
 }
 
 .usa-header .logo {
-	max-height: 140px;
-    padding-left: 1rem;
+    max-height: 140px;
+
 }
 
 .usa-search [type="submit"] {
-	background-image: url("../img/usa-icons-bg/search--white.svg"),linear-gradient(transparent, transparent) !important;
+    background-image: url("../img/usa-icons-bg/search--white.svg"),linear-gradient(transparent, transparent) !important;
 }
 
 /* NAVIGATION */
@@ -49,7 +49,7 @@
     font-weight: 700;
     font-size: 1em;
     font-family: "Roboto", "Helvetica Neue", Arial, Tacoma !important;
-	padding: 1rem 1rem 0.5rem 1rem;
+    padding: 1rem 1rem 0.5rem 0;
 }
 
 .usa-nav .usa-accordion {
@@ -70,17 +70,19 @@
     color: "blue-warm-70" !important;
 }
 
-.usa-nav__submenu .usa-nav__submenu-item a {	
+.usa-nav__submenu .usa-nav__submenu-item a {
     color: color("blue-warm-70") !important;
-	padding: 1.2rem 1.5rem !important;
+    padding: 1.2rem 1.5rem !important;
+}
 
-}
 .usa-nav__submenu {
-    padding: 0;	
+    padding: 0;
 }
+
 .usa-nav__submenu-item {
     border-bottom: 1px solid #ddd !important;
 }
+
 .usa-nav__submenu-item:hover {
     background-color: color("gray-5") !important;
 }
@@ -110,28 +112,41 @@ footer a:hover {
 /*Media Quieries */
 
 @media (min-width: 1280px) {
-	.usa-nav-container {
+    .usa-nav-container, .usa-banner__inner {
         @include grid-container("desktop-lg");
     }
-	
+
     .grid-container {
         @include grid-container("desktop-lg");
+    }
+    .usa-header--basic .usa-nav__primary-item > .usa-current::after, .usa-header--basic .usa-nav__link:hover::after {
+        left: 0;
+    }
+
+
+}
+
+@media (min-width: 991px) {
+    .usa-header--basic .usa-nav__primary-item > .usa-current::after, .usa-header--basic .usa-nav__link:hover::after {
+        left: 0;
+    }
+    .usa-nav__primary button, .usa-nav__primary > .usa-nav__primary-item > a {
+        padding: 1rem 1rem 0.5rem 0;
     }
 }
 
 @media (max-width: 991px) {
-	.usa-header .logo {
-	   max-height: 40px;
-        padding-left: 1rem;
+    .usa-header .logo {
+       max-height: 40px;
+
     }
 }
 
-
 @media (max-width: 480px) {
-	.usa-header .logo {
+    .usa-header .logo {
         padding-left: 1rem;
     }
-	.usa-search {
+    .usa-search {
         margin-left: 1rem;
         margin-right: 1rem;
     }
