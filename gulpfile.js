@@ -39,6 +39,8 @@ PATHS
 // Project Sass source directory
 const PROJECT_SASS_SRC = "./src/sass";
 
+const PROJECT_IMG_SRC = "./src/img";
+
 // Images destination
 const IMG_DEST = "./dist/img";
 
@@ -62,11 +64,11 @@ TASKS
 ----------------------------------------
 */
 
-gulp.task("copy-uswds-setup", () => {
-  return gulp
-    .src(`${uswds}/scss/theme/**/**`)
-    .pipe(gulp.dest(`${PROJECT_SASS_SRC}`));
-});
+//gulp.task("copy-uswds-setup", () => {
+//  return gulp
+//    .src(`${uswds}/scss/theme/**/**`)
+//    .pipe(gulp.dest(`${PROJECT_SASS_SRC}`));
+//});
 
 gulp.task("copy-uswds-fonts", () => {
   return gulp.src(`${uswds}/fonts/**/**`).pipe(gulp.dest(`${FONTS_DEST}`));
@@ -74,6 +76,10 @@ gulp.task("copy-uswds-fonts", () => {
 
 gulp.task("copy-uswds-images", () => {
   return gulp.src(`${uswds}/img/**/**`).pipe(gulp.dest(`${IMG_DEST}`));
+});
+
+gulp.task("copy-nlm-images", () => {
+  return gulp.src(`${PROJECT_IMG_SRC}/**/**`).pipe(gulp.dest(`${IMG_DEST}`));
 });
 
 gulp.task("copy-uswds-js", () => {
@@ -166,16 +172,18 @@ gulp.task("clean-sprite", function (cb) {
   return del.sync(`${IMG_DEST}/symbol`);
 });
 
-gulp.task(
-  "init",
-  gulp.series(
-    "copy-uswds-setup",
-    "copy-uswds-fonts",
-    "copy-uswds-images",
-    "copy-uswds-js",
-    "build-sass"
-  )
-);
+
+/* gulp.task(
+ * "init",
+ * gulp.series(
+ *     "copy-uswds-setup",
+ *     "copy-uswds-fonts",
+ *     "copy-uswds-images",
+ *     "copy-uswds-js",
+ *     "build-sass"
+ *   )
+ * );
+ */
 
 gulp.task("watch-sass", function () {
   gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series("build-sass"));
@@ -189,6 +197,7 @@ gulp.task("build",
   gulp.series(
     "copy-uswds-fonts",
     "copy-uswds-images",
+    "copy-nlm-images",
     "copy-uswds-js",
     "build-sass"
   )
