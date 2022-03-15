@@ -10,6 +10,17 @@ This package uses yarn instead of npm as advised in the
 link above, so that dependency resolutions can be handled 
 simply using [selective dependency resolutions](https://classic.yarnpkg.com/en/docs/selective-version-resolutions/).
 
+### USWDS Theme
+
+NLM's tehme is in `src/sass`.  The rules from uswds-gulp that setup `src/sass`
+have been commented out to avoid overwriting anything.
+
+### NLM Images
+
+NLM's images are in `src/img` and are copied to `dist/img`. That means this
+repository can be tested independently of the main web site and assets repository,
+but it also means some duplication. Space is cheap.
+
 ## Needed Development Tools
 
 You need a working copy of node.  The lowest recommended version is node 12.
@@ -71,5 +82,11 @@ For now, check-out the
 [static-assets](https://git-scm.nlm.nih.gov/projects/AS/repos/static-assets)
 git repository and copy the files from this repo's `dist` into the other
 repo's `uswds` sub-directory, then add/commit/push to get them onto the server.
+
+In terms of commands, on a Linux or MacBook Pro it is:
+
+```bash
+rsync -avW dist/ ../static-assets/uswds/
+```
 
 We will worry about automating that later, if at all.
