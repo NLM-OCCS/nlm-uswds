@@ -90,7 +90,13 @@ function initServe(cb) {
     "server": {
       "baseDir": ["./examples", "./dist"],
       "index": "index.htm"
-    }
+    },
+    "files": [
+      "./dist/css/nlm-uswds.css",
+      "./examples/basic.htm",
+      "./examples/alla.htm",
+      "./examples/index.htm"
+    ]
   });
   cb();
 }
