@@ -39,6 +39,6 @@
     "nth-check": "^2.0.1"
   },
   "dependencies": {
-    "uswds": "^2.12.1"
+    "uswds": "^2.13.2"
   }
 }
