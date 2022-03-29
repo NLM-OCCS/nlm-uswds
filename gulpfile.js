@@ -1,14 +1,5 @@
 /*
-* * * * * ==============================
-* * * * * ==============================
-* * * * * ==============================
-* * * * * ==============================
-========================================
-========================================
-========================================
-----------------------------------------
-USWDS SASS GULPFILE
-----------------------------------------
+A Gulp build of USWDS
 */
 
 const autoprefixer = require("autoprefixer");
@@ -19,44 +10,40 @@ const postcss = require("gulp-postcss");
 const replace = require("gulp-replace");
 const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
-const uswds = require("./config/uswds");
+
 const del = require("del");
 const svgSprite = require("gulp-svg-sprite");
 const rename = require("gulp-rename");
 const browserSync = require("browser-sync").create();
+const uswds = require("@uswds/compile");
 
 /*
 ----------------------------------------
-PATHS
-----------------------------------------
-- All paths are relative to the
-  project root
-- Don't use a trailing `/` for path
-  names
+USWDS setings and global constants
 ----------------------------------------
 */
 
-// Project Sass source directory
-const PROJECT_SASS_SRC = "./src/sass";
+uswds.settings.version = 2;
 
-const PROJECT_IMG_SRC = "./src/img";
+// They call this a *dist*, but it is the source of *my* USWDS theming SCSS
+uswds.paths.dist.theme = "./src/sass";
+
+// CSS Destination
+uswds.paths.dist.css = "./dist/css";
 
 // Images destination
-const IMG_DEST = "./dist/img";
+uswds.paths.dist.img = "./dist/img";
 
 // Fonts destination
-const FONTS_DEST = "./dist/fonts";
+uswds.paths.dist.fonts = "./dist/fonts";
 
 // Javascript destination
-const JS_DEST = "./dist/js";
+uswds.paths.dist.js = "./dist/js";
 
-// Compiled CSS destination
-const CSS_DEST = "./dist/css";
+// Extra Images source location
+const PROJECT_IMG_SRC = "./src/img";
 
-// Site CSS destination
-// Like the _site/assets/css directory in Jekyll, if necessary.
-// If using, uncomment line 106
-const SITE_CSS_DEST = "./dist/css";
+
 
 /*
 ----------------------------------------
@@ -64,163 +51,54 @@ TASKS
 ----------------------------------------
 */
 
-//gulp.task("copy-uswds-setup", () => {
-//  return gulp
-//    .src(`${uswds}/scss/theme/**/**`)
-//    .pipe(gulp.dest(`${PROJECT_SASS_SRC}`));
-//});
+exports.copyFonts = uswds.copyFonts;
 
-gulp.task("copy-uswds-fonts", () => {
-  return gulp.src(`${uswds}/fonts/**/**`).pipe(gulp.dest(`${FONTS_DEST}`));
+exports.copyImages = uswds.copyImages;
+
+gulp.task("copyNLMImages", () => {
+  return gulp.src(`${PROJECT_IMG_SRC}/**/**`).pipe(gulp.dest(uswds.paths.dist.img));
 });
 
-gulp.task("copy-uswds-images", () => {
-  return gulp.src(`${uswds}/img/**/**`).pipe(gulp.dest(`${IMG_DEST}`));
-});
+exports.copyJS = uswds.copyJS;
 
-gulp.task("copy-nlm-images", () => {
-  return gulp.src(`${PROJECT_IMG_SRC}/**/**`).pipe(gulp.dest(`${IMG_DEST}`));
-});
+exports.copyAssets = uswds.copyAssets;
 
-gulp.task("copy-uswds-js", () => {
-  return gulp.src(`${uswds}/js/**/**`).pipe(gulp.dest(`${JS_DEST}`));
-});
+exports.copyAll = uswds.copyAll;
 
-gulp.task("build-sass", function (done) {
-  var plugins = [
-    // Autoprefix
-    autoprefixer({
-      cascade: false,
-      grid: true,
-    }),
-    // Minify
-    csso({ forceMediaMerge: false }),
-  ];
-  return (
-    gulp
-      .src([`${PROJECT_SASS_SRC}/*.scss`])
-      .pipe(sourcemaps.init({ largeFile: true }))
-      .pipe(
-        sass.sync({
-          includePaths: [
-            `${PROJECT_SASS_SRC}`,
-            `${uswds}/scss`,
-            `${uswds}/scss/packages`,
-          ],
-        })
-      )
-      .pipe(replace(/\buswds @version\b/g, "based on uswds v" + pkg.version))
-      .pipe(postcss(plugins))
-      .pipe(sourcemaps.write("."))
-      // uncomment the next line if necessary for Jekyll to build properly
-      //.pipe(gulp.dest(`${SITE_CSS_DEST}`))
-      .pipe(gulp.dest(`${CSS_DEST}`))
-      .pipe(browserSync.stream())
-  );
-});
+exports.compileSass = uswds.compileSass;
 
-// SVG sprite configuration
-config = {
-  shape: {
-    dimension: {
-      // Set maximum dimensions
-      maxWidth: 24,
-      maxHeight: 24,
-    },
-    id: {
-      separator: "-",
-    },
-    spacing: {
-      // Add padding
-      padding: 0,
-    },
-  },
-  mode: {
-    symbol: true, // Activate the «symbol» mode
-  },
-};
+exports.compileIcons = uswds.compileIcons;
 
-gulp.task("build-sprite", function (done) {
-  gulp
-    .src(`${IMG_DEST}/usa-icons/**/*.svg`, {
-      allowEmpty: true,
-    })
-    .pipe(svgSprite(config))
-    .on("error", function (error) {
-      console.log("There was an error");
-    })
-    .pipe(gulp.dest(`${IMG_DEST}`))
-    .on("end", function () {
-      done();
-    });
-});
+exports.build = uswds.updateUswds;
 
-gulp.task("rename-sprite", function (done) {
-  gulp
-    .src(`${IMG_DEST}/symbol/svg/sprite.symbol.svg`, {
-      allowEmpty: true,
-    })
-    .pipe(rename(`${IMG_DEST}/sprite.svg`))
-    .pipe(gulp.dest(`./`))
-    .on("end", function () {
-      done();
-    });
-});
+exports.compile = uswds.compile;
 
-gulp.task("clean-sprite", function (cb) {
-  cb();
-  return del.sync(`${IMG_DEST}/symbol`);
-});
+exports.watch = uswds.watch;
 
+exports.defaults = uswds.watch;
 
-/* gulp.task(
- * "init",
- * gulp.series(
- *     "copy-uswds-setup",
- *     "copy-uswds-fonts",
- *     "copy-uswds-images",
- *     "copy-uswds-js",
- *     "build-sass"
- *   )
- * );
- */
-
-gulp.task("watch-sass", function () {
-  gulp.watch(`${PROJECT_SASS_SRC}/**/*.scss`, gulp.series("build-sass"));
-});
-
-gulp.task("watch", gulp.series("build-sass", "watch-sass"));
-
-gulp.task("default", gulp.series("watch"));
-
-gulp.task("build",
-  gulp.series(
-    "copy-uswds-fonts",
-    "copy-uswds-images",
-    "copy-nlm-images",
-    "copy-uswds-js",
-    "build-sass"
-  )
-);
-
-gulp.task(
-  "svg-sprite",
-  gulp.series("build-sprite", "rename-sprite", "clean-sprite")
-);
-
-gulp.task("clean", function(cb) {
+function clean(cb) {
   cb();
   return del.sync("dist");
-});
+}
 
-gulp.task("initserve", function(cb) {
+
+exports.clean = clean;
+
+function initServe(cb) {
   browserSync.init({
     "server": {
       "baseDir": ["./examples", "./dist"],
       "index": "index.htm"
-    }
+    },
+    "files": [
+      "./dist/css/nlm-uswds.css",
+      "./examples/basic.htm",
+      "./examples/alla.htm",
+      "./examples/index.htm"
+    ]
   });
   cb();
-});
+}
 
-gulp.task("serve", gulp.series("build", "initserve", "watch-sass"));
+exports.serve = gulp.series(uswds.updateUswds, initServe, uswds.watch);
