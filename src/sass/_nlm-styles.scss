@@ -117,6 +117,9 @@ footer a:hover {
     .usa-nav-container, .usa-banner__inner {
         @include grid-container("desktop-lg");
     }
+    .usa-footer__primary-section > .grid-container {
+        @include grid-container("desktop-lg");
+    }
 
     .grid-container {
         @include grid-container("desktop-lg");
