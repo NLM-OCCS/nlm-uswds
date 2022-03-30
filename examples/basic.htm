@@ -111,10 +111,11 @@
         </a>
       </div>
       <div class="grid-col-12 desktop:grid-col-8 tablet:grid-col-4 padding-top-1">
-        <form class="usa-search usa-search--small ">
+        <form class="usa-search usa-search--small" action="https://vsearch.nlm.nih.gov/vivisimo/cgi-bin/query-meta">
           <div role="search">
             <label class="usa-sr-only" for="basic-search-field-small">Search small</label>
-            <input class="usa-input" id="basic-search-field-small" type="search" name="search">
+            <input class="usa-input" id="basic-search-field-small" type="search" name="query">
+            <input type="hidden" name="v:project" value="nlm-main-website">
             <button class="usa-button" type="submit"><span class="usa-sr-only">Search</span></button>
           </div>
         </form>
@@ -201,7 +202,7 @@
 </main>
 <!-- Footer -->
 <footer class="usa-footer__primary-section padding-y-5">
-  <div class="grid-container">
+  <div class="usa-nav-container">
     <div class="grid-row">
       <div class="desktop:grid-col-3 grid-col-6">
         <p class="text-white">Follow NLM</p>
