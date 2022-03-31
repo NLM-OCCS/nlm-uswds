@@ -2,7 +2,7 @@
 
 ## Summary
 
-A gulp build of USWDS with style customizations for NLM based on [uswds-gulp](https://github.com/uswds/uswds-gulp)
+A gulp build of USWDS with style customizations for NLM based on [uswds-compile](https://github.com/uswds/uswds-compile)
 
 ## Differences
 
@@ -10,10 +10,13 @@ This package uses yarn instead of npm as advised in the
 link above, so that dependency resolutions can be handled 
 simply using [selective dependency resolutions](https://classic.yarnpkg.com/en/docs/selective-version-resolutions/).
 
+We also integrate browserSync so that the header and footer can be viewed and
+tested.
+
 ### USWDS Theme
 
-NLM's tehme is in `src/sass`.  The rules from uswds-gulp that setup `src/sass`
-have been commented out to avoid overwriting anything.
+NLM's theme is in `src/sass`.  To avoid overwriting anything, we do not include
+the gulp tasks from uswds-compile that would initialize `src/sass`.
 
 ### NLM Images
 
@@ -23,7 +26,7 @@ but it also means some duplication. Space is cheap.
 
 ## Needed Development Tools
 
-You need a working copy of node.  The lowest recommended version is node 12.
+You need a working copy of node.  The lowest recommended version is node 14.
 
 Install a copy of yarn and gulp-cli "globally" as follows:
 
@@ -33,9 +36,9 @@ npm install -g yarn gulp-cli
 
 ## How to build it
 
-1. Clone from git using Atlassian Sourcetree or however you would normally do it
+1. Clone from git however you would normally do it.
 
-2. Start a command-prompt and change directory to the directory where you have clone from git
+2. Start a command-prompt and change directory to the directory where you have clone from git.
 
 3. Install Node packages by entering:
 
@@ -74,19 +77,10 @@ gulp serve
 
 ## Output
 
-The output of the process is the files in the `dist` subdirectory, principally`dist/css/nlm-uswds.css` and `dist/css/nlm/nlm-uswds.css.map`.
+The output of the process is the files in the `dist` subdirectory, principally `dist/css/nlm-uswds.css` and `dist/css/nlm/nlm-uswds.css.map`.
 
 ## Promoting
 
-For now, check-out the
-[static-assets](https://git-scm.nlm.nih.gov/projects/AS/repos/static-assets)
-git repository and copy the files from this repo's `dist` into the other
-repo's `uswds` sub-directory, then add/commit/push to get them onto the server.
-
-In terms of commands, on a Linux or MacBook Pro it is:
-
-```bash
-rsync -avW dist/ ../static-assets/uswds/
-```
+For now, promotion to our assets repository is manual.
 
 We will worry about automating that later, if at all.

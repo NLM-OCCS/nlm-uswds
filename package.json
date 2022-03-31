@@ -15,8 +15,12 @@
     "type": "git",
     "url": "https://git-scm.nlm.nih.gov/scm/python/nlm-uswds.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "OCCS/AB, NLM, NIH",
+  "contributors": [
+    "Dan Davis <daniel.davis@nih.gov>",
+    "Alla Vysokolova <alla.vysokolova@nih.gov>"
+  ],
+  "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
     "@uswds/compile": "^1.0.0-beta.2",
     "autoprefixer": "^10.4.0",
