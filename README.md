@@ -2,7 +2,9 @@
 
 ## Summary
 
-A gulp build of USWDS with style customizations for NLM based on [uswds-compile](https://github.com/uswds/uswds-compile)
+A gulp build of USWDS with style customizations for the OCCS/AB (applications
+branch) of NLM using [uswds-compile](https://github.com/uswds/uswds-compile). This is different from what other organizations within NLM are doing to move
+towards USWDS.
 
 ## Differences
 
