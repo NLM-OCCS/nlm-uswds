@@ -5,7 +5,7 @@ A Gulp build of USWDS
 const autoprefixer = require("autoprefixer");
 const csso = require("postcss-csso");
 const gulp = require("gulp");
-const pkg = require("./node_modules/uswds/package.json");
+const pkg = require("./node_modules/@uswds/uswds/package.json");
 const postcss = require("gulp-postcss");
 const replace = require("gulp-replace");
 const sass = require("gulp-sass")(require("sass"));
@@ -23,7 +23,7 @@ USWDS setings and global constants
 ----------------------------------------
 */
 
-uswds.settings.version = 2;
+uswds.settings.version = 3;
 
 // They call this a *dist*, but it is the source of *my* USWDS theming SCSS
 uswds.paths.dist.theme = "./src/sass";
