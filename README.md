@@ -28,7 +28,7 @@ but it also means some duplication. Space is cheap.
 
 ## Needed Development Tools
 
-You need a working copy of node. The lowest working version is node 16. 
+You need node installed and in your path. The lowest version of node supported by `@uswds/compile` is node 16. 
 
 Within OCCS/AB, we have node installed on the desktop, but node 14 is the default copy.
 You can fix this and test it within a shell as follows:
