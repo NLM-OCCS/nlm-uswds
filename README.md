@@ -2,8 +2,8 @@
 
 ## Summary
 
-A gulp build of USWDS with style customizations for the OCCS/AB (applications
-branch) of NLM using [uswds-compile](https://github.com/uswds/uswds-compile). This is different from what other organizations within NLM are doing to move
+A gulp build of USWDS 3.0.1 with style customizations for NLM OCCS/AB (applications
+branch of NLM) using [uswds-compile](https://github.com/uswds/uswds-compile). This is different from what other organizations within NLM are doing to move
 towards USWDS.
 
 ## Differences
@@ -17,7 +17,7 @@ tested.
 
 ### USWDS Theme
 
-NLM's theme is in `src/sass`.  To avoid overwriting anything, we do not include
+NLM's theme is in `src/sass`. To avoid overwriting anything, we do not include
 the gulp tasks from uswds-compile that would initialize `src/sass`.
 
 ### NLM Images
@@ -28,7 +28,7 @@ but it also means some duplication. Space is cheap.
 
 ## Needed Development Tools
 
-You need node installed and in your path. The lowest version of node supported by `@uswds/compile` is node 16. 
+You need node installed and in your path. The lowest version of node supported by `@uswds/compile` is node 16.
 
 Within OCCS/AB, we have node installed on the desktop, but node 14 is the default copy.
 You can fix this and test it within a shell as follows:
