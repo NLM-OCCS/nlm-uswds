@@ -42,13 +42,20 @@ npm install -g yarn gulp-cli
 
 2. Start a command-prompt and change directory to the directory where you have clone from git.
 
-3. Install Node packages by entering:
+3. Make sure your node version is 16+ (at the time of writing).  You may also want to make sure that yarn and gulp-cli are installed globally:
 
 ```
-yarn install
+node -v
+npm install --location=global yarn gulp-cli
 ```
 
-4. Build by running
+4. Install Node packages by entering:
+
+```
+arn install
+```
+
+5. Build by running
 
 ```
 yarn run build
@@ -60,7 +67,7 @@ or
 gulp build
 ```
 
-5. See what it will look like by running:
+6. See what it will look like by running:
 
 ```
 yarn run serve
@@ -72,7 +79,7 @@ or
 gulp serve
 ```
 
-6. Some other tasks you may wish to try:
+7. Some other tasks you may wish to try:
 
 * remove `dist` subdirectory by running `gulp clean`.
 * build `dist` and rebuild on any changes by running `gulp watch`
