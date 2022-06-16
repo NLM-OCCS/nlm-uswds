@@ -28,7 +28,15 @@ but it also means some duplication. Space is cheap.
 
 ## Needed Development Tools
 
-You need a working copy of node.  The lowest recommended version is node 14.
+You need a working copy of node. The lowest working version is node 16. 
+
+Within OCCS/AB, we have node installed on the desktop, but node 14 is the default copy.
+You can fix this and test it within a shell as follows:
+
+```
+set PATH=C:\Tools\Node\16.13.2;%PATH%
+node -v
+``` 
 
 Install a copy of yarn and gulp-cli "globally" as follows:
 
@@ -36,26 +44,25 @@ Install a copy of yarn and gulp-cli "globally" as follows:
 npm install -g yarn gulp-cli
 ```
 
+If you get a warning from the above command, you can ignore it or try:
+
+```
+npm install --location=global yarn gulp-cli
+``` 
+
 ## How to build it
 
 1. Clone from git however you would normally do it.
 
 2. Start a command-prompt and change directory to the directory where you have clone from git.
 
-3. Make sure your node version is 16+ (at the time of writing).  You may also want to make sure that yarn and gulp-cli are installed globally:
+3. Install Node packages by entering:
 
 ```
-node -v
-npm install --location=global yarn gulp-cli
+yarn install
 ```
 
-4. Install Node packages by entering:
-
-```
-arn install
-```
-
-5. Build by running
+4. Build by running
 
 ```
 yarn run build
@@ -67,7 +74,7 @@ or
 gulp build
 ```
 
-6. See what it will look like by running:
+5. See what it will look like by running:
 
 ```
 yarn run serve
@@ -79,7 +86,7 @@ or
 gulp serve
 ```
 
-7. Some other tasks you may wish to try:
+6. Some other tasks you may wish to try:
 
 * remove `dist` subdirectory by running `gulp clean`.
 * build `dist` and rebuild on any changes by running `gulp watch`
